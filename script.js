@@ -1,8 +1,8 @@
 var data = ''
-fetch("https://www.filltext.com/?rows=32&id=%7Bnumber%7C1000%7D&firstName=%7BfirstName%7D&lastName=%7BlastName%7D&email=%7Bemail%7D&phone=%7Bphone%7C(xxx)xxx-xx-xx%7D&address=%7BaddressObject%7D&description=%7Blorem%7C32%7D")
+fetch("http://www.filltext.com/?rows=5&id=%7Bnumber%7C1000%7D&firstName=%7BfirstName%7D&lastName=%7BlastName%7D&email=%7Bemail%7D&phone=%7Bphone%7C(xxx)xxx-xx-xx%7D&address=%7BaddressObject%7D&description=%7Blorem%7C32%7D")
 .then((response)=>response.json())
-.then((d)=>{data = d; console.log(data)
-    for (let i = 0; i < 5; i++) {
+.then((d)=>{data = d;
+    for (let i = 0; i < data.length; i++) {
                 // console.log(data[i].id);
                 // console.log("Here");
                 let c = document.createElement('tr')
@@ -59,23 +59,23 @@ var curact = -1
 
 
 
-var se = document.getElementById('search-box')
-se.addEventListener('onchange',(e)=>{
-    console.log(e);
-})
+// var se = document.getElementById('search-box')
+// se.addEventListener('onchange',(e)=>{
+//     console.log(e);
+// })
 
 const searchFunc = () =>{
     // console.log("here")
     let filter = document.getElementById("search-box").value.toUpperCase()
     let list = document.getElementsByClassName('data-row')
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < data.length; i++) {
         let tn = (data[i].firstName+" " + data[i].lastName).toUpperCase()
         if(tn.includes(filter)){
-            console.log(data[i].firstName)
+            // console.log(data[i].firstName)
             list[i].style.display=""
         }
         else{
-            console.log(data[i].firstName)
+            // console.log(data[i].firstName)
             list[i].style.display="none"
         }
     }
